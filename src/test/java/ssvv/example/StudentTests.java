@@ -53,7 +53,7 @@ public class StudentTests {
 
     @Test(expected = ValidationException.class)
     public void addStudentShouldThrowValidationExceptionForInvalidStudent() {
-        Student student = new Student("", "John", 932,"");
+        Student student = new Student("", "", -1,"");
         service.addStudent(student);
     }
 }
