@@ -27,20 +27,12 @@ public class StudentTests {
     public void setUp() throws Exception {
         File file = new File("src\\test\\java\\ssvv\\example\\files\\testStudenti.xml");
         FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write("""
-                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                <inbox>
-                </inbox>""");
+        fileWriter.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<inbox>\n</inbox>");
         fileWriter.close();
         studentRepo = new StudentXMLRepo("src\\test\\java\\ssvv\\example\\files\\testStudenti.xml");
         TemaXMLRepo temaRepo = new TemaXMLRepo("src\\test\\java\\ssvv\\example\\files\\testTeme.xml");
         NotaXMLRepo notaRepo = new NotaXMLRepo("src\\test\\java\\ssvv\\example\\files\\testNote.xml");
         service = new Service(studentRepo, new StudentValidator(), temaRepo, new TemaValidator(), notaRepo, new NotaValidator(studentRepo, temaRepo));
-    }
-
-    @BeforeAll
-    public static void beforeAll() {
-        System.out.println("Before all");
     }
 
     @Test
