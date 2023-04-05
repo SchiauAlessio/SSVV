@@ -2,7 +2,6 @@ package ssvv.example;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import ssvv.example.domain.Student;
 import ssvv.example.repository.NotaXMLRepo;
 import ssvv.example.repository.StudentXMLRepo;
