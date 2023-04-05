@@ -42,9 +42,67 @@ public class StudentTests {
         assertEquals(student, studentRepo.findOne("1"));
     }
 
+    @Test
+    public void addStudentShouldAddStudentToRepositoryLowGroup() {
+        Student student = new Student("1", "John", 0, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
+    @Test
+    public void addStudentShouldAddStudentToRepositoryShortName() {
+        Student student = new Student("1", "J", 0, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
+    @Test
+    public void addStudentShouldAddStudentToRepositoryShortEmail() {
+        Student student = new Student("1", "John", 937, "s");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
     @Test(expected = ValidationException.class)
     public void addStudentShouldThrowValidationExceptionForInvalidStudent() {
         Student student = new Student("", "", -1,"");
+        service.addStudent(student);
+    }
+
+    @Test
+    public void addExistingStudentShouldReturnExistingStudent() {
+        Student student = new Student("1", "John", 932, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+        Student result2 = service.addStudent(student);
+        assertEquals(student, result2);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForInvalidId() {
+        Student student = new Student("", "John", 932,"student@gmail.com");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForInvalidName() {
+        Student student = new Student("1", "", 932,"student@gmail.com");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForNegativeGroup() {
+        Student student = new Student("1", "John", -1,"student@gmail.com");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForInvalidEmail() {
+        Student student = new Student("1", "John", 932,"");
         service.addStudent(student);
     }
 }
