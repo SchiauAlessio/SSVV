@@ -1,9 +1,7 @@
 package ssvv.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 import ssvv.example.domain.Student;
 import ssvv.example.repository.NotaXMLRepo;
@@ -18,9 +16,10 @@ import ssvv.example.validation.ValidationException;
 import java.io.File;
 import java.io.FileWriter;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-public class StudentTests extends TestCase {
+public class StudentTests {
     private Service service;
     private StudentXMLRepo studentRepo;
 
@@ -36,22 +35,17 @@ public class StudentTests extends TestCase {
         service = new Service(studentRepo, new StudentValidator(), temaRepo, new TemaValidator(), notaRepo, new NotaValidator(studentRepo, temaRepo));
     }
 
-    public static Test suite()
-    {
-        return new TestSuite( StudentTests.class );
-    }
-
-
-    public void testAddStudentShouldAddStudentToRepository() {
+    @Test
+    public void addStudentShouldAddStudentToRepository() {
         Student student = new Student("1", "John", 932, "student@gmail.com");
         Student result = service.addStudent(student);
         assertNull(result);
         assertEquals(student, studentRepo.findOne("1"));
     }
 
-    public void testAddStudentShouldThrowValidationExceptionForInvalidStudent() {
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForInvalidStudent() {
         Student student = new Student("", "", -1,"");
-//        service.addStudent(student);
-        assertThrows(ValidationException.class, () -> service.addStudent(student));
+        service.addStudent(student);
     }
 }
