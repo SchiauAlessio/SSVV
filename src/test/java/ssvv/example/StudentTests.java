@@ -51,6 +51,14 @@ public class StudentTests {
     }
 
     @Test
+    public void addStudentShouldAddStudentToRepositoryLowGroup1() {
+        Student student = new Student("1", "John", 1, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
+    @Test
     public void addStudentShouldAddStudentToRepositoryShortName() {
         Student student = new Student("1", "J", 0, "student@gmail.com");
         Student result = service.addStudent(student);
