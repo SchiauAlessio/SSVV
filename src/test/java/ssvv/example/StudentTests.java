@@ -119,6 +119,12 @@ public class StudentTests {
     }
 
     @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForNullName() {
+        Student student = new Student("1", null, 932,"student@gmail.com");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
     public void addStudentShouldThrowValidationExceptionForNegativeGroup() {
         Student student = new Student("1", "John", -1,"student@gmail.com");
         service.addStudent(student);
@@ -127,6 +133,12 @@ public class StudentTests {
     @Test(expected = ValidationException.class)
     public void addStudentShouldThrowValidationExceptionForInvalidEmail() {
         Student student = new Student("1", "John", 932,"");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForNullEmail() {
+        Student student = new Student("1", "John", 932, null);
         service.addStudent(student);
     }
 }
