@@ -113,6 +113,12 @@ public class StudentTests {
     }
 
     @Test(expected = ValidationException.class)
+    public void addStudentShouldThrowValidationExceptionForNullId() {
+        Student student = new Student(null, "John", 932,"student@gmail.com");
+        service.addStudent(student);
+    }
+
+    @Test(expected = ValidationException.class)
     public void addStudentShouldThrowValidationExceptionForInvalidName() {
         Student student = new Student("1", "", 932,"student@gmail.com");
         service.addStudent(student);
