@@ -59,6 +59,22 @@ public class StudentTests {
     }
 
     @Test
+    public void addStudentShouldAddStudentToRepositoryMaxIntGroup() {
+        Student student = new Student("1", "John", Integer.MAX_VALUE, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
+    @Test
+    public void addStudentShouldAddStudentToRepositoryMaxIntMinus1Group() {
+        Student student = new Student("1", "John", Integer.MAX_VALUE-1, "student@gmail.com");
+        Student result = service.addStudent(student);
+        assertNull(result);
+        assertEquals(student, studentRepo.findOne("1"));
+    }
+
+    @Test
     public void addStudentShouldAddStudentToRepositoryShortName() {
         Student student = new Student("1", "J", 0, "student@gmail.com");
         Student result = service.addStudent(student);
