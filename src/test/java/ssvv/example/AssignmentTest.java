@@ -36,6 +36,7 @@ public class AssignmentTest {
 
     @Test
     public void addAssignmentShouldAddValidAssignmentToRepository() {
+        //path 2
         Tema tema = new Tema("1", "Description", 1, 1);
         Tema result = service.addTema(tema);
         assertNull(result);
@@ -44,7 +45,38 @@ public class AssignmentTest {
 
     @Test(expected = ValidationException.class)
     public void addAssignmentShouldThrowValidationExceptionForNegativePrimire() {
+        //path 3
         Tema tema = new Tema("1", "Description", 1, -1);
+        service.addTema(tema);
+    }
+
+    @Test
+    public void addExistingAssignmentShouldReturnExistingAssignment() {
+        //path 1
+        Tema tema = new Tema("1", "Description", 1, 1);
+        service.addTema(tema);
+        Tema result = service.addTema(tema);
+        assertEquals(tema, result);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForNullId() {
+        //path 6
+        Tema tema = new Tema(null, "Description", 1, 1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForEmptyDescription() {
+        //path 5
+        Tema tema = new Tema("1", "", 1, 1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForDeadline0() {
+        //path 4
+        Tema tema = new Tema("1", "Description", 0, 1);
         service.addTema(tema);
     }
 

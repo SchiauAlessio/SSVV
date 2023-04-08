@@ -12,7 +12,7 @@ public class TemaValidator implements Validator<Tema> {
      */
     @Override
     public void validate(Tema entity) throws ValidationException {
-        if(entity.getID().equals("") || entity.getID() == null) {
+        if("".equals(entity.getID()) || entity.getID() == null) {
             throw new ValidationException("Numar tema invalid!");
         }
         if(entity.getDescriere().equals("")){
