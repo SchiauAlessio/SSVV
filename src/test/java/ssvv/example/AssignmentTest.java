@@ -44,9 +44,16 @@ public class AssignmentTest {
     }
 
     @Test(expected = ValidationException.class)
-    public void addAssignmentShouldThrowValidationExceptionForNegativePrimire() {
+    public void addAssignmentShouldThrowValidationExceptionForPrimireMinus1() {
         //path 3
         Tema tema = new Tema("1", "Description", 1, -1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForPrimire15() {
+        //path 3
+        Tema tema = new Tema("1", "Description", 1, 15);
         service.addTema(tema);
     }
 
@@ -67,7 +74,21 @@ public class AssignmentTest {
     }
 
     @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForEmptyId() {
+        //path 6
+        Tema tema = new Tema("", "Description", 1, 1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
     public void addAssignmentShouldThrowValidationExceptionForEmptyDescription() {
+        //path 5
+        Tema tema = new Tema("1", "", 1, 1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForNullDescription() {
         //path 5
         Tema tema = new Tema("1", "", 1, 1);
         service.addTema(tema);
@@ -77,6 +98,13 @@ public class AssignmentTest {
     public void addAssignmentShouldThrowValidationExceptionForDeadline0() {
         //path 4
         Tema tema = new Tema("1", "Description", 0, 1);
+        service.addTema(tema);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void addAssignmentShouldThrowValidationExceptionForDeadline15() {
+        //path 4
+        Tema tema = new Tema("1", "Description", 15, 1);
         service.addTema(tema);
     }
 
