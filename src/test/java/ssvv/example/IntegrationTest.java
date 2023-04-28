@@ -76,7 +76,7 @@ public class IntegrationTest {
 
         // Set up mock behavior
         Student student = new Student("1", "John", 932, "student@gmail.com");
-        Tema tema = new Tema("1", "Description", 12, 12);
+        Tema tema = new Tema("1", "Description", 13, 13);
         Mockito.when(mockStudentRepo.findOne("1")).thenReturn(student);
         Mockito.when(mockTemaRepo.findOne("1")).thenReturn(tema);
 
@@ -95,7 +95,7 @@ public class IntegrationTest {
         Student student = new Student("1", "John", 932, "student@gmail.com");
         service.addStudent(student);
 
-        Tema tema = new Tema("1", "Description", 12, 12);
+        Tema tema = new Tema("1", "Description", 13, 13);
         service.addTema(tema);
 
         Nota nota = new Nota("1", "1", "1", 10D, LocalDate.now());
