@@ -59,7 +59,7 @@ public class IntegrationTest {
 
         StudentXMLRepo mockStudentRepo = Mockito.mock(StudentXMLRepo.class);
         TemaXMLRepo mockTemaRepo = Mockito.mock(TemaXMLRepo.class);
-        
+
         when(mockStudentRepo.save(any(Student.class))).thenReturn(null);
         when(mockStudentRepo.findOne("1")).thenReturn(student);
 
