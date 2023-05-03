@@ -167,7 +167,7 @@ public class Service {
         int predare = calculeazaSPredare(nota.getData());
 
         //my brothers what if you deliver early??? should be >
-        if(predare != tema.getDeadline()){
+        if(predare > tema.getDeadline()){
             if (predare-tema.getDeadline() == 1){
                 nota.setNota(nota.getNota()-2.5);
             }
