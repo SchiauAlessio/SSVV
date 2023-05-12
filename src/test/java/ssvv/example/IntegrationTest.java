@@ -55,7 +55,7 @@ public class IntegrationTest {
 
     private Service createMockService() {
         Student student = new Student("1", "John", 932, "em@em.em");
-        Tema tema = new Tema("1", "Description", 13, 13);
+        Tema tema = new Tema("1", "Description", 14, 14);
 
         StudentXMLRepo mockStudentRepo = Mockito.mock(StudentXMLRepo.class);
         TemaXMLRepo mockTemaRepo = Mockito.mock(TemaXMLRepo.class);
@@ -95,7 +95,7 @@ public class IntegrationTest {
 
         // Set up mock behavior
         Student student = new Student("1", "John", 932, "student@gmail.com");
-        Tema tema = new Tema("1", "Description", 13, 13);
+        Tema tema = new Tema("1", "Description", 14, 14);
         when(mockStudentRepo.findOne("1")).thenReturn(student);
         when(mockTemaRepo.findOne("1")).thenReturn(tema);
 

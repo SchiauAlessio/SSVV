@@ -184,3 +184,51 @@ Nota: 10.0
 Predata in saptamana: 13
 Deadline: 13
 Feedback: Good job!
+
+Tema: 1
+Nota: 7.5
+Predata in saptamana: 14
+Deadline: 13
+Feedback: null
+
+Tema: 1
+Nota: 10.0
+Predata in saptamana: 14
+Deadline: 14
+Feedback: Good job!
+
+Tema: 1
+Nota: 10.0
+Predata in saptamana: 14
+Deadline: 14
+Feedback: null
+
+Tema: 1
+Nota: 7.5
+Predata in saptamana: 15
+Deadline: 14
+Feedback: Good job!
+
+Tema: 1
+Nota: 7.5
+Predata in saptamana: 15
+Deadline: 14
+Feedback: Good job!
+
+Tema: 1
+Nota: 10.0
+Predata in saptamana: 13
+Deadline: 14
+Feedback: Good job!
+
+Tema: 1
+Nota: 10.0
+Predata in saptamana: 13
+Deadline: 13
+Feedback: Good job!
+
+Tema: 1
+Nota: 10.0
+Predata in saptamana: 13
+Deadline: 14
+Feedback: Good job!
